@@ -46,7 +46,6 @@
 "%1$@ MHz로 이동" = "Tune to %1$@ MHz";
 "가장 센 대체 주파수로 이동" = "Tune to Strongest Alternate Frequency";
 "AF 자동 전환" = "Automatic AF Switching";
-"표시명 지정" = "Set Display Name";
 "예: KBS Cool FM" = "e.g. KBS Cool FM";
 "채널 목록, 즐겨찾기, 제목에 이 이름이 표시됩니다. 최대 %lld자." = "This name appears in the channel list, favorites, and title. Up to %lld characters.";
 "이름 지우기" = "Clear Name";
@@ -59,8 +58,6 @@
 "음소거 (M)" = "Mute (M)";
 "라디오를 켜려면 EO-IC100을 연결하세요." = "Connect the EO-IC100 to turn on the radio.";
 "EO-IC100이 연결되지 않았습니다." = "EO-IC100 is not connected.";
-"라디오를 켜세요." = "Turn on the radio.";
-"표시명 지우기" = "Clear Display Name";
 "라이브로 돌아가기 (L)" = "Go Live (L)";
 "녹음" = "Record";
 "녹음 끝내고 저장 (R)" = "Stop and Save Recording (R)";
@@ -89,7 +86,7 @@
 "타임머신" = "Time Machine";
 "버퍼 길이" = "Buffer Length";
 "일시정지와 되감기를 쓰지 않습니다. (녹음은 따로 쓸 수 있습니다)" = "Pause and rewind are disabled. (Recording remains available.)";
-"임시 디스크를 약 %lldMB 쓰며, 라디오를 끄면 지워집니다. 방송국을 바꾸면 이전 방송의 기록은 버려집니다. 변경은 다음에 라디오를 켤 때 적용됩니다." = "Uses about %lld MB of temporary disk space, cleared when the radio is turned off. Changing stations discards the previous buffer. Changes apply next time the radio is turned on.";
+"임시 디스크를 약 %lldMB 쓰며, 라디오를 끄면 지워집니다. 방송국을 바꾸면 이전 방송의 기록은 버려집니다. 변경은 다음에 라디오를 켤 때 적용됩니다." = "Temporary disk usage is about %lld MB. It is cleared when the radio turns off. Changing stations discards previous recordings. Changes take effect the next time the radio is turned on.";
 "녹음" = "Recording";
 "저장 폴더" = "Save Folder";
 "폴더 선택…" = "Choose Folder…";
