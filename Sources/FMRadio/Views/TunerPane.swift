@@ -4,16 +4,9 @@ struct TunerPane: View {
     @EnvironmentObject private var radio: RadioModel
     @Environment(\.palette) private var theme
 
-    /// 켜져 있으면 "지금 재생 중" 아래에 표시명(없으면 주파수)을 보여준다.
-    private var title: String {
-        guard radio.isOn else { return "라디오를 켜세요." }
-        let second = radio.name(for: radio.frequency) ?? "\(mhz(radio.frequency)) MHz"
-        return "지금 재생 중\n\(second)"
-    }
-
     var body: some View {
         VStack(spacing: 13) {
-            Text(title)
+            tunerTitle
                 .font(.system(size: 27, weight: .semibold))
                 .foregroundStyle(theme.text)
                 .multilineTextAlignment(.center)
@@ -22,6 +15,14 @@ struct TunerPane: View {
                 .frame(maxWidth: .infinity, minHeight: 70)
             TunerCard()
         }
+    }
+
+    /// Keep the title as localized SwiftUI Text instead of converting it to String,
+    /// so the active locale is honored and SwiftUI can refresh it on locale changes.
+    private var tunerTitle: Text {
+        guard radio.isOn else { return Text("라디오를 켜세요.") }
+        let station = radio.name(for: radio.frequency) ?? "\(mhz(radio.frequency)) MHz"
+        return Text("지금 재생 중\n\(station)")
     }
 }
 
@@ -153,9 +154,15 @@ struct FrequencyReadout: View {
             }
 
             if !radio.isOn {
-                Text(radio.deviceConnected ? "라디오를 켜세요." : "EO-IC100이 연결되지 않았습니다.")
-                    .font(.system(size: 13))
-                    .foregroundStyle(theme.dim)
+                if radio.deviceConnected {
+                    Text("라디오를 켜세요.")
+                        .font(.system(size: 13))
+                        .foregroundStyle(theme.dim)
+                } else {
+                    Text("EO-IC100이 연결되지 않았습니다.")
+                        .font(.system(size: 13))
+                        .foregroundStyle(theme.dim)
+                }
             }
         }
     }
@@ -174,7 +181,7 @@ struct FrequencyReadout: View {
     }
 }
 
-/// 86~110MHz 눈금자. 끌어서 주파수를 바꾼다.
+/// 86–110 MHz frequency scale. Drag to tune.
 struct FrequencyDial: View {
     @EnvironmentObject private var radio: RadioModel
     @Environment(\.palette) private var theme
@@ -216,7 +223,7 @@ struct FrequencyDial: View {
     }
 
     private func drawScale(_ context: GraphicsContext, size: CGSize) {
-        // 0.5MHz마다 눈금, 3MHz마다 숫자
+        // Tick every 0.5 MHz, label every 3 MHz.
         for t in stride(from: low, through: high, by: 5) {
             let major = (t - low) % 30 == 0
             let px = x(for: t, width: size.width)
