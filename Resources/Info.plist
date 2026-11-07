@@ -32,6 +32,6 @@
     <key>NSHighResolutionCapable</key>
     <true/>
     <key>NSMicrophoneUsageDescription</key>
-    <string>EO-IC100의 FM 라디오 오디오를 입력 장치로 받아 재생하기 위해 필요합니다. (마이크 소리는 사용하지 않습니다.)</string>
+    <string>EO-IC100’s FM radio audio is used as the input device for playback. (Microphone audio is not used.)</string>
 </dict>
 </plist>
