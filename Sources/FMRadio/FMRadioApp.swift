@@ -154,7 +154,7 @@ struct RadioCommands: Commands {
 
             Button("가장 센 대체 주파수 확인 (AF)") { radio.evaluateAF(manual: true) }
                 .keyboardShortcut("a", modifiers: [])
-            Button("Mac 스피커로 재생 전환") { radio.speakerMode.toggle() }
+            Button("Mac 스피커로 재생 전환") { radio.setSpeakerMode(!radio.speakerMode) }
                 .keyboardShortcut("s", modifiers: [.command, .shift])
         }
     }

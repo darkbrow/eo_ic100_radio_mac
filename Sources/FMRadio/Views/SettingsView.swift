@@ -35,9 +35,12 @@ struct SettingsView: View {
                         Text(device.name).tag(device.uid)
                     }
                 }
-                Toggle("Mac 스피커로 재생", isOn: $radio.speakerMode)
+                Toggle("Mac 스피커로 재생", isOn: Binding(
+                    get: { radio.speakerMode },
+                    set: { radio.setSpeakerMode($0) }
+                ))
                 Toggle("볼륨 키가 재생 중인 장치를 조절하도록 시스템 출력 맞춤", isOn: $radio.syncSystemOutputEnabled)
-                Text("맥의 볼륨 키와 이어폰의 볼륨 버튼은 시스템 출력 장치만 조절합니다. 켜 두면 라디오가 켜져 있는 동안 시스템 출력이 재생 중인 장치로 바뀝니다(다른 앱의 소리도 그 장치로 나옵니다). 라디오를 끄거나 이 설정을 끄면 원래 장치로 돌아갑니다.")
+                Text("맥의 볼륨 키와 이어폰의 볼륨 버튼은 시스템 출력 장치만 조절합니다. 켜 두면 라디오가 켜져 있는 동안 시스템 출력이 재생 중인 장치로 바뀝니다(다른 앱의 소리도 그 장치로 나옵니다). 라디오를 끄거나, 이 설정을 끄면 원래 장치로 돌아갑니다.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
                 Picker("입력 장치 (이어폰)", selection: $radio.inputUID) {
@@ -95,7 +98,7 @@ struct SettingsView: View {
                 Button("RDS 데모 보기 (가짜 방송 정보)") { radio.startRDSDemo() }
                     .disabled(!radio.isOn)
                 Button("저장된 RDS 정보 지우기") { radio.clearRDSCache() }
-                Text("방송국이 RDS를 송출하지 않으면 정보가 표시되지 않습니다. AF 자동 전환은 RDS 수신이 4초 넘게 끊길 때, 같은 방송국(PI가 같은)의 대체 주파수 중 수신이 가장 센 곳으로 옮깁니다. 확인하는 동안 잠깐 소리가 끊깁니다.")
+                Text("방송국이 RDS를 송출하지 않으면 정보가 표시되지 않습니다. AF 자동 전환은 RDS 수신이 4초 넘게 끊길 때, 같은 방송국(PI가 같은)의 더 나은 주파수를 확인합니다.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
