@@ -59,7 +59,7 @@
 "라디오를 켜려면 EO-IC100을 연결하세요." = "Connect the EO-IC100 to turn on the radio.";
 "EO-IC100이 연결되지 않았습니다." = "EO-IC100 is not connected.";
 "라이브로 돌아가기 (L)" = "Go Live (L)";
-"녹음" = "Record";
+"녹음" = "Recording";
 "녹음 끝내고 저장 (R)" = "Stop and Save Recording (R)";
 "지금부터 녹음 (R)" = "Start Recording (R)";
 "지난 %lld분 저장" = "Save Previous %lld Minutes";
@@ -86,8 +86,7 @@
 "타임머신" = "Time Machine";
 "버퍼 길이" = "Buffer Length";
 "일시정지와 되감기를 쓰지 않습니다. (녹음은 따로 쓸 수 있습니다)" = "Pause and rewind are disabled. (Recording remains available.)";
-"임시 디스크를 약 %lldMB 쓰며, 라디오를 끄면 지워집니다. 방송국을 바꾸면 이전 방송의 기록은 버려집니다. 변경은 다음에 라디오를 켤 때 적용됩니다." = "Temporary disk usage is about %lld MB. It is cleared when the radio turns off. Changing stations discards previous recordings. Changes take effect the next time the radio is turned on.";
-"녹음" = "Recording";
+"임시 디스크를 약 %lldMB 쓰며, 라디오를 끄면 지워집니다. 방송국을 바꾸면 이전 방송의 기록은 버려집니다. 변경은 다음에 라디오를 켤 때 적용됩니다." = "Temporary disk usage is about %lld MB. It is cleared when the radio turns off. Changing stations discards previous station data. Changes take effect the next time the radio is turned on.";
 "저장 폴더" = "Save Folder";
 "폴더 선택…" = "Choose Folder…";
 "폴더 열기" = "Open Folder";
@@ -116,7 +115,6 @@
 "연결 안 됨" = "Not Connected";
 "칩 대역" = "Chip Band";
 "버전" = "Version";
-"자동 찾기" = "Auto Scan";
 "%1$@MHz에서 채널을 찾았습니다." = "Found a station at %1$@ MHz.";
 "채널을 찾는 중입니다." = "Searching for stations.";
 "지금까지 채널 %lld개를 찾았습니다." = "Found %lld stations so far.";
