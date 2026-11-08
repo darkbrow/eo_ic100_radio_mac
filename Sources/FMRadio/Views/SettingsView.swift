@@ -26,10 +26,10 @@ struct SettingsView: View {
             Section {
                 Picker(selection: $radio.autoOffMinutes) {
                     Text("settings.never", tableName: "Settings").tag(0)
-                    Text("settings.minutes", tableName: "Settings", 15).tag(15)
-                    Text("settings.minutes", tableName: "Settings", 30).tag(30)
-                    Text("settings.hour", tableName: "Settings", 1).tag(60)
-                    Text("settings.hours", tableName: "Settings", 2).tag(120)
+                    Text(formatted("settings.minutes", 15)).tag(15)
+                    Text(formatted("settings.minutes", 30)).tag(30)
+                    Text(formatted("settings.hour", 1)).tag(60)
+                    Text(formatted("settings.hours", 2)).tag(120)
                 } label: {
                     Text("settings.auto_off.description", tableName: "Settings")
                 }
@@ -72,7 +72,7 @@ struct SettingsView: View {
                     } maximumValueLabel: {
                         Text("24 dB")
                     }
-                    Text("settings.gain.note", tableName: "Settings", Int(radio.gainDB))
+                    Text(formatted("settings.gain.note", Int(radio.gainDB)))
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -83,10 +83,10 @@ struct SettingsView: View {
             Section {
                 Picker(selection: $radio.timeMachineMinutes) {
                     Text("settings.never", tableName: "Settings").tag(0)
-                    Text("settings.minutes", tableName: "Settings", 5).tag(5)
-                    Text("settings.minutes", tableName: "Settings", 15).tag(15)
-                    Text("settings.minutes", tableName: "Settings", 30).tag(30)
-                    Text("settings.minutes", tableName: "Settings", 60).tag(60)
+                    Text(formatted("settings.minutes", 5)).tag(5)
+                    Text(formatted("settings.minutes", 15)).tag(15)
+                    Text(formatted("settings.minutes", 30)).tag(30)
+                    Text(formatted("settings.minutes", 60)).tag(60)
                 } label: {
                     Text("settings.buffer.length", tableName: "Settings")
                 }
@@ -193,8 +193,16 @@ struct SettingsView: View {
         }
         .formStyle(.grouped)
         .frame(width: 560, height: 800)
-        // Depend on the locale environment so a system language change re-evaluates this form.
         .id(locale.identifier)
+    }
+
+    private func localized(_ key: String) -> String {
+        Bundle.main.localizedString(forKey: key, value: key, table: "Settings")
+    }
+
+    private func formatted(_ key: String, _ arguments: CVarArg...) -> String {
+        let template = localized(key)
+        return String(format: template, locale: locale, arguments: arguments)
     }
 
     @ViewBuilder
@@ -214,12 +222,8 @@ struct SettingsView: View {
             Text("settings.buffer.disabled_note", tableName: "Settings")
         } else {
             let megabytes = Int((Double(radio.timeMachineMinutes) * 11.5).rounded())
-            Text("settings.buffer.enabled_note", tableName: "Settings", megabytes)
+            Text(formatted("settings.buffer.enabled_note", megabytes))
         }
-    }
-
-    private func localized(_ key: String) -> String {
-        Bundle.main.localizedString(forKey: key, value: key, table: "Settings")
     }
 
     private func chooseFolder() {
