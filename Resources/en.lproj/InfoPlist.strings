@@ -1,0 +1,3 @@
+"CFBundleName" = "FM Radio";
+"CFBundleDisplayName" = "FM Radio";
+"NSMicrophoneUsageDescription" = "Needed to receive the EO-IC100's FM radio audio as an input device and play it. (Microphone sound is not used.)";
